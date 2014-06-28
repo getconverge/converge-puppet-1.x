@@ -10,7 +10,7 @@ mysql::db { 'converge':
   host     => 'localhost',
   ensure   => 'present',
   enforce_sql => 'true',
-  sql      => '/etc/puppet/files/converge.sql',
+  sql      => '/etc/puppet/files/mysql/converge.sql',
 }
 
 }
