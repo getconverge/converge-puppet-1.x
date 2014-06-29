@@ -60,6 +60,7 @@ CREATE TABLE `catalogue` (
   `editor_role_id` bigint(20) DEFAULT NULL,
   `preview_rendition` bigint(20) DEFAULT NULL,
   `original_rendition` bigint(20) DEFAULT NULL,
+  `max_file_upload_size` bigint(20) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_media_repository_editor_role_id` (`editor_role_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1046,6 +1047,7 @@ CREATE TABLE `user_account` (
   `default_search_engine_tags` tinyint(4) DEFAULT '1',
   `default_search_results_order_by` varchar(255) DEFAULT NULL,
   `default_search_results_order` tinyint(1) NOT NULL DEFAULT '0',
+  `default_work_day` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_user_account_0` (`username`),
   KEY `FK_user_account_cleareance_level` (`clearance_level`),
@@ -1310,11 +1312,11 @@ INSERT INTO rendition (name, label, description) VALUES ('rnd:mobile', 'Content 
 INSERT INTO `config` (`config_value`, `config_key`)
 VALUES
 	('http://dev.getconverge.com/','CONVERGE_HOME_URL'),
-        ('ldap://localhost:1389/','LDAP_PROVIDER_URL'),
-        ('cn=Directory Manager','LDAP_SECURITY_PRINCIPAL'),
+  ('ldap://localhost:389/','LDAP_PROVIDER_URL'),
+  ('cn=Directory Manager','LDAP_SECURITY_PRINCIPAL'),
 	('secret','LDAP_SECURITY_CREDENTIALS'),
 	('simple','LDAP_SECURITY_AUTHENTICATION'),
-	('dc=x,dc=y,dc=z','LDAP_BASE'),
+	('dc=dev,dc=getconverge,dc=com','LDAP_BASE'),
 	('cn=converge,ou=groups,dc=dev,dc=getconverge,dc=com','LDAP_GROUP_USERS'),
 	('cn=converge-administrator,ou=groups,dc=dev,dc=getconverge,dc=com','LDAP_GROUP_ADMINISTRATORS'),
 	('/home/converge','WORKING_DIRECTORY'),
