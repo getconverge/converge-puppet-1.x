@@ -1,0 +1,52 @@
+dn: dc=dev,dc=getconverge,dc=com
+objectclass: domain
+objectclass: top
+dc: dev
+
+dn: ou=groups,dc=dev,dc=getconverge,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: ou=people,dc=dev,dc=getconverge,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: uid=roro,ou=people,dc=dev,dc=getconverge,dc=com
+cn: Bob Rogers
+givenName: Robert
+mail: roro@dev.getconverge.com
+objectClass: organizationalPerson
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: top
+sn: Rogers
+uid: roro
+userPassword: roro
+
+dn: uid=admin,ou=people,dc=dev,dc=getconverge,dc=com
+cn: Administrator
+displayName: Administrator
+givenName: Admin
+mail: admin@dev.getconverge.com
+objectClass: organizationalPerson
+objectClass: person
+objectClass: inetOrgPerson
+objectClass: top
+sn: Admin
+uid: admin
+userPassword: admin
+
+dn: cn=converge,ou=groups,dc=dev,dc=getconverge,dc=com
+cn: converge
+objectClass: top
+objectClass: groupOfUniqueNames
+uniqueMember: uid=roro,ou=people,dc=dev,dc=getconverge,dc=com
+uniqueMember: uid=admin,ou=people,dc=dev,dc=getconverge,dc=com
+
+dn: cn=converge-administrator,ou=groups,dc=dev,dc=getconverge,dc=com
+cn: converge-administrator
+objectClass: top
+objectClass: groupOfUniqueNames
+uniqueMember: uid=admin,ou=people,dc=dev,dc=getconverge,dc=com
