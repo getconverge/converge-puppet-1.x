@@ -60,10 +60,13 @@ CREATE TABLE `catalogue` (
   `editor_role_id` bigint(20) DEFAULT NULL,
   `preview_rendition` bigint(20) DEFAULT NULL,
   `original_rendition` bigint(20) DEFAULT NULL,
+  `user_role_id` bigint(20) DEFAULT NULL,
   `max_file_upload_size` bigint(20) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `FK_media_repository_editor_role_id` (`editor_role_id`)
+  KEY `FK_media_repository_editor_role_id` (`editor_role_id`),
+  KEY `fk_catalogue_user_role` (`user_role_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 DROP TABLE IF EXISTS `catalogue_hook`;
 
@@ -687,7 +690,9 @@ CREATE TABLE `news_item_workflow_state_transition` (
   KEY `news_item_workflow_state_transition_news_item_id` (`news_item_id`),
   KEY `FK_news_item_workflow_state_transition_state_id` (`state_id`),
   KEY `news_item_workflow_state_transitionuser_account_id` (`user_account_id`)
+  KEY `idx_history_activity_report` (`user_account_id`,`transition_timestamp`,`submitted`,`news_item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 DROP TABLE IF EXISTS `newswire_basket`;
 
